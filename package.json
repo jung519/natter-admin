@@ -2,7 +2,7 @@
   "name": "admin",
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"npm run build\" \"node dist/out-tsc/server/app.js\"",
+    "start": "concurrently --kill-others \"npx tsc -w\" \"nodemon dist/out-tsc/server/app.js\"",
     "build": "npx tsc --watch",
     "prebuild": "rm -rf dist/out-tsc"
   },
