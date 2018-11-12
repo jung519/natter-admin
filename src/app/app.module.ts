@@ -20,7 +20,6 @@ import { AuthGuard } from './auth.guard';
 import { AppComponent } from './app.component';
 import { SignComponent } from './sign/sign.component';
 import { MainComponent } from './main/main.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -31,7 +30,6 @@ export function tokenGetter() {
     AppComponent,
     SignComponent,
     MainComponent,
-    DashboardComponent
   ],
   imports: [
     CoreModule,
