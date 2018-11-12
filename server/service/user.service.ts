@@ -6,4 +6,6 @@ export class UserService {
     const userArray = User.findAll();
     return userArray;
   }
+
+
 }

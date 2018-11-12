@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { matchedData } from 'express-validator/filter';
 import { validationResult } from 'express-validator/check';
 import { UserService } from '../service/user.service';
 
@@ -16,4 +15,8 @@ userRouter.get('/userList', (req, res) => {
   console.log('userList =', user);
   return user.then(u => res.json(u));
 
+});
+
+userRouter.post('/auth/token', (req, res) => {
+  console.log('req =', req);
 });
