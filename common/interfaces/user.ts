@@ -13,6 +13,7 @@ export interface User {
 export interface SignAuth {
   email: string;
   password: string;
+  user_name?: string;
   signup_email?: string;
   signup_pw?: string;
   signup_pw_1?: string;

@@ -2,15 +2,16 @@ import * as Sequelize from 'sequelize';
 import sequelize from '../sequelize';
 
 export interface UserDefaultModel {
-  user_number: number;
-  email: string;
-  user_name: string;
-  password: string;
-  create_date: Date;
-  update_date: Date;
-  user_status: string;
-  user_class: string;
-  sign_fail_cnt: number;
+  user_number?: number;
+  email?: string;
+  user_name?: string;
+  password?: string;
+  create_date?: Date;
+  update_date?: Date;
+  user_status?: string;
+  user_class?: string;
+  introduce?: string;
+  sign_fail_cnt?: number;
 }
 
 
@@ -34,7 +35,8 @@ export const User = sequelize.define<UserModel, UserDefaultModel>('user', {
   update_date: {type: Sequelize.DATE},
   user_status: {type: Sequelize.STRING},
   user_class: {type: Sequelize.STRING},
-  sign_fail_cnt: {type: Sequelize.INTEGER}
+  sign_fail_cnt: {type: Sequelize.INTEGER},
+  introduce: {type: Sequelize.SMALLINT}
 }, {
     classMethods: {},
     tableName: 'users',

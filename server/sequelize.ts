@@ -1,14 +1,10 @@
 import * as Sequelize from 'sequelize';
 import * as Bluebird from 'bluebird';
-import { type } from 'os';
+import config from './config/config';
 
-const db = 'natter';
-const username = 'root';
-const password = 'Wjdgus123!';
-
-const sequelize = new Sequelize(db, username, password, {
-  dialect: 'mysql',
-  port: 3306,
+const sequelize = new Sequelize(config.db.db, config.db.username, config.db.password, {
+  dialect: config.db.dialect,
+  port: config.db.post,
 });
 
 export default sequelize;

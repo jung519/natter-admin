@@ -9,6 +9,7 @@ import SignDao from './sign.dao';
 export const signController = Router();
 const signService = new SignService(new SignDao);
 
+// 로그인
 signController.post('/auth/token', (req, res) => {
   const options: any = {};
   options.email = req.param('email');
@@ -19,10 +20,25 @@ signController.post('/auth/token', (req, res) => {
       return new NotFound('없는 아이디 입니다.');
     }
     const token = jwt.sign(returnValue, config.jwt.admin.secret, {expiresIn: config.jwt.admin.expiresIn});
-    return {token};
+    return res.json({token});
   })
   .catch(err => {
-    console.log(err);
+    console.log('err =', err);
     return err;
+  });
+});
+
+
+// 회원가입
+signController.post('/signup', (req, res) => {
+  const options: any = {
+    email: req.param('email'),
+    user_name: req.param('user_name'),
+    password: req.param('password'),
+    introduce: req.param('introduce')
+  };
+  signService.addSignUp(options)
+  .then(result => {
+    return res.json(result);
   });
 });

@@ -53,7 +53,7 @@
                     type="button"
                     style="margin-left:8px;"
                     class="btn btn-primary"
-                    (click)="signInWithGoogle()"
+                    (click)="signWithGoogle()"
                   >SignIn with Google</button>
                 </div>
               </div>
@@ -98,6 +98,21 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="text" class="col-md-3 control-label">Nick name</label>
+                <div class="col-md-9">
+                    <input 
+                      type="text"
+                      class="form-control"
+                      name="user_name"
+                      placeholder="name"
+                      [(ngModel)]="sign.user_name"
+                      minlength="2"
+                      maxlength="8"
+                      required
+                    >
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="password" class="col-md-3 control-label">Password</label>
                 <div class="col-md-9">
                   <input 
@@ -106,6 +121,8 @@
                     name="signup_pw"
                     placeholder="Password"
                     [(ngModel)]="sign.signup_pw"
+                    minlength="8"
+                    maxlength="15"
                     required
                   >
                 </div>
@@ -119,12 +136,14 @@
                     name="signup_pw_1"
                     placeholder="Password"
                     [(ngModel)]="sign.signup_pw_1"
+                    minlength="8"
+                    maxlength="15"
                     required
                   >
                 </div>
             </div>
             <div class="form-group">
-                <label for="icode" class="col-md-3 control-label">Introduce</label>
+                <label for="text" class="col-md-3 control-label">Introduce</label>
                 <div class="col-md-9">
                     <input 
                       type="text"
@@ -132,6 +151,7 @@
                       name="introduce"
                       placeholder="Introduce"
                       [(ngModel)]="sign.introduce"
+                      maxlength="40"
                     >
                 </div>
             </div>
@@ -142,6 +162,7 @@
                       id="btn-signup"
                       type="button"
                       class="btn btn-info"
+                      (click)="signUp()"
                       [disabled]="!signUpForm.form.valid"
                     ><i class="icon-hand-right"></i>Sign Up</button>
                     <span style="margin-left:8px; margin-right: 8px">or</span>
@@ -149,6 +170,7 @@
                       id="btn-fbsignup"
                       type="button"
                       class="btn btn-primary"
+                      (click)="signWithGoogle()"
                     ><i class="icon-facebook"></i>Sign Up with Google</button>
                 </div>
             </div>

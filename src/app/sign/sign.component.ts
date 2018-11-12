@@ -22,12 +22,13 @@ export class SignComponent implements OnInit {
 
   ngOnInit() {
     this.initInterfaceObject();
-    if (!this.auth.isTokenExpired()) this.router.navigate(['/']);
+    // if (!this.auth.isTokenExpired()) this.router.navigate(['/']);
   }
 
   initInterfaceObject() {
     this.sign = {
       email: '',
+      user_name: '',
       password: '',
       signup_email: '',
       signup_pw: '',
@@ -36,15 +37,34 @@ export class SignComponent implements OnInit {
     };
   }
 
-  signIn() {
+  signIn(): void {
     this.auth.signIn(this.sign)
     .subscribe(() => {
       this.router.navigateByUrl(this.redirect);
     });
   }
 
-  signInWithGoogle() {
+  signWithGoogle() {
     alert('go! google');
+  }
+
+  signUp(): void {
+    alert('signUp');
+    if (this.sign.signup_pw === this.sign.signup_pw_1) {
+      this.sign.email = this.sign.signup_email;
+      this.sign.password = this.sign.signup_pw;
+      this.auth.signUp(this.sign)
+      .subscribe(result => {
+        if (result) {
+          this.router.navigateByUrl(this.redirect);
+        } else {
+          alert('이미 가입된 이메일 입니다.');
+          this.sign.email = '';
+        }
+      });
+    } else {
+      this.sign.signup_pw_1 = '';
+    }
   }
 
 }

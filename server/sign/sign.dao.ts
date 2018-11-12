@@ -13,11 +13,10 @@ export default class SignDao extends SQ {
     console.log('options =', options);
     const { sql, replacements } = this.getSignPermissionQuery(options);
     const [[permissionResult]] = await this.sequelizeQuery(sql, {replacements, type: this.queryType['SELECT'] });
-    console.log('permission =', permissionResult);
     return <SignAuth>{...permissionResult};
   }
 
-  getSignPermissionQuery(options: SignAuth) {
+  getSignPermissionQuery(options: SignAuth): {sql, replacements} {
     const replacements = {};
     const sql = `
       SELECT u.email, u.user_name, u.create_date, u.introduce, user_class, u.user_status, u.sign_fail_cnt
@@ -39,11 +38,29 @@ export default class SignDao extends SQ {
     });
   }
 
-  async increaseInvalidPasswordCnt(email: string) {
+  increaseInvalidPasswordCnt(email: string): void {
     User.update({
       sign_fail_cnt : +1
     }, {
       where: {email: email}
+    });
+  }
+
+  addSignUp(options: SignAuth) {
+    User.findOrCreate({
+      where: {email: options.email},
+      defaults: {
+        email: options.email,
+        user_name: options.user_name,
+        password: options.password,
+        create_date: new Date(),
+        introduce: options.introduce,
+        user_class: '1',
+        user_status: '1'
+      }
+    })
+    .spread((result, created) => {
+      return created;
     });
   }
 
