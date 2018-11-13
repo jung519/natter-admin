@@ -49,17 +49,20 @@ export class SignComponent implements OnInit {
   }
 
   signUp(): void {
-    alert('signUp');
     if (this.sign.signup_pw === this.sign.signup_pw_1) {
       this.sign.email = this.sign.signup_email;
       this.sign.password = this.sign.signup_pw;
       this.auth.signUp(this.sign)
       .subscribe(result => {
+        console.log(result);
         if (result) {
-          this.router.navigateByUrl(this.redirect);
+          // this.router.navigateByUrl(this.redirect);
+          alert('회원가입이 완료 되었습니다.\n로그인 화면으로 이동합니다.');
+          location.reload();
         } else {
           alert('이미 가입된 이메일 입니다.');
           this.sign.email = '';
+          this.sign.signup_email = '';
         }
       });
     } else {

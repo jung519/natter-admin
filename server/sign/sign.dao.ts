@@ -46,8 +46,8 @@ export default class SignDao extends SQ {
     });
   }
 
-  addSignUp(options: SignAuth) {
-    User.findOrCreate({
+  async addSignUp(options: SignAuth): Bluebird<any> {
+    return await User.findOrCreate({
       where: {email: options.email},
       defaults: {
         email: options.email,
