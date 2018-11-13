@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+  styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
 
@@ -13,13 +13,15 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.router.navigate(['/dashboard']);
   }
 
 
   signOut() {
     if (confirm('로그아웃 하냐?')) {
       localStorage.removeItem('access_token');
-      this.router.navigate(['/']);
+      // this.router.navigate(['/']);
+      location.reload();
     }
   }
 

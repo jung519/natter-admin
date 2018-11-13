@@ -32,7 +32,7 @@ export class SignService {
     }
   }
 
-  async addSignUp(options: SignAuth) {
+  async addSignUp(options: SignAuth): Bluebird<any> {
     try {
       const hash_password = crypto.createHash('sha512').update(options.password).digest('base64');
       options.password = hash_password;

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { SignAuth } from '../../../common/interfaces/user';
+import { Result } from 'range-parser';
 
 @Injectable()
 export class AuthService {
@@ -35,6 +36,14 @@ export class AuthService {
   }
 
   signUp(options: SignAuth) {
-    return this.http.post(`${environment.admin_api_url}/signup`, options);
+    return this.http.post<{}>(`${environment.admin_api_url}/signup`, options)
+    .pipe(tap(result => {
+      console.log('pipe', result);
+      return result;
+    }));
+    // .subscribe(result => {
+    //   console.log('auth =', result);
+    //   return result;
+    // });
   }
 }
