@@ -54,9 +54,7 @@ export class SignComponent implements OnInit {
       this.sign.password = this.sign.signup_pw;
       this.auth.signUp(this.sign)
       .subscribe(result => {
-        console.log(result);
         if (result) {
-          // this.router.navigateByUrl(this.redirect);
           alert('회원가입이 완료 되었습니다.\n로그인 화면으로 이동합니다.');
           location.reload();
         } else {

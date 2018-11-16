@@ -38,9 +38,9 @@ export const User = sequelize.define<UserModel, UserDefaultModel>('user', {
   sign_fail_cnt: {type: Sequelize.INTEGER},
   introduce: {type: Sequelize.SMALLINT}
 }, {
-    classMethods: {},
-    tableName: 'users',
-    freezeTableName: true,
-    underscored: true,
-    timestamps: false
+  classMethods: {},
+  tableName: 'users',
+  freezeTableName: true,
+  underscored: true,
+  timestamps: false
 });

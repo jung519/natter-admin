@@ -1,13 +1,14 @@
 export interface User {
-  email: string;
-  password: string;
-  create_date: Date;
+  user_number?: number;
+  email?: string;
+  password?: string;
   user_name?: string;
   user_status?: string;
   user_class?: string;
-  del_yn?: string;
+  create_date?: Date;
   update_date?: Date;
-  etc?: string;
+  introduce?: string;
+  sign_fail_cnt?: number;
 }
 
 export interface SignAuth {

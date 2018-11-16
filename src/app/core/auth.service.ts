@@ -38,7 +38,6 @@ export class AuthService {
   signUp(options: SignAuth) {
     return this.http.post<{}>(`${environment.admin_api_url}/signup`, options)
     .pipe(tap(result => {
-      console.log('pipe', result);
       return result;
     }));
     // .subscribe(result => {
