@@ -10,7 +10,6 @@ export default class SignDao extends SQ {
   }
 
   async getSignPermission(options: SignAuth): Bluebird<SignAuth> {
-    console.log('options =', options);
     const { sql, replacements } = this.getSignPermissionQuery(options);
     const [[permissionResult]] = await this.sequelizeQuery(sql, {replacements, type: this.queryType['SELECT'] });
     return <SignAuth>{...permissionResult};
@@ -40,7 +39,7 @@ export default class SignDao extends SQ {
 
   increaseInvalidPasswordCnt(email: string): void {
     User.update({
-      sign_fail_cnt : +1
+      sign_fail_cnt : this.literal('sign_fail_cnt + 1')
     }, {
       where: {email: email}
     });

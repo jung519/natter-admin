@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CollapseModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './auth.service';
+import { CommonCodeService } from './common-code.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { AuthService } from './auth.service';
   ],
   providers: [
     AuthService,
+    CommonCodeService
   ]
 })
 export class CoreModule {
