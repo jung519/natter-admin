@@ -1,8 +1,9 @@
 import { SignAuth } from '../../common/interfaces/user';
 import { User } from '../models/users';
-import * as Sequelize from 'sequelize';
 import * as Bluebird from 'bluebird';
 import { SQ } from '../sequelize';
+import { signUpDefaultInfo } from '../../common/common_enum';
+
 
 export default class SignDao extends SQ {
   constructor() {
@@ -22,7 +23,7 @@ export default class SignDao extends SQ {
       , (u.password = :password) as pw_conform
       FROM users AS u
       WHERE u.email = :email
-      AND u.user_class = '1'
+      AND u.user_status = ${signUpDefaultInfo.user_status}
     `;
     replacements['email'] = options.email;
     replacements['password'] = options.password;
@@ -54,8 +55,8 @@ export default class SignDao extends SQ {
         password: options.password,
         create_date: new Date(),
         introduce: options.introduce,
-        user_class: '1',
-        user_status: '1'
+        user_class: signUpDefaultInfo.user_class,
+        user_status: signUpDefaultInfo.user_status
       }
     })
     .spread((result, created) => {

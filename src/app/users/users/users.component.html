@@ -36,13 +36,9 @@
       </thead>
       <tbody>  
         <!-- <div *ngIf="user_list; else other_info"> -->
-          <tr *ngFor="let list of user_list; index as i">
+          <tr *ngFor="let list of user_list; index as i" (click)="getUserDetail(list.user_number)">
                 <td>{{list.user_number}}</td>
-                <td>
-                  <a
-                  (click)="getUserDetail(list.user_number)"
-                  >{{list.email}}</a>
-                </td>
+                <td>{{list.email}}</td>
                 <td>{{list.user_name}}</td>
           </tr>
         <!-- </div> -->
@@ -87,13 +83,17 @@
           <tr>
             <td>User_status</td>
             <td>
-              <select></select>
+              <select name="user_status" [(ngModel)]="user_dtl.user_status">
+                <option *ngFor="let list of us" [ngValue]="list.cd">{{list.cd_name}}</option>
+              </select>
             </td>
           </tr>
           <tr>
             <td>User_class</td>
             <td>
-              <select></select>
+              <select name="user_class" [(ngModel)]="user_dtl.user_class">
+                <option *ngFor="let list of uc" [ngValue]="list.cd">{{list.cd_name}}</option>
+              </select>
             </td>
           </tr>
           <tr>
@@ -121,9 +121,5 @@
       class="btn btn-success"
       (click)="putUserDetail()"
     >update</a>
-    <a
-      class="btn btn-success"
-      (click)="getCodeTest()"
-    >test</a>
   </div>
 </div>

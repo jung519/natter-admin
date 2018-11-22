@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { UserService } from './user.service';
 import { UserDao } from './user.dao';
+import { User } from '../../common/interfaces/user';
 
 export const UserController = Router();
 const userService = new UserService(new UserDao);
@@ -37,11 +38,13 @@ UserController.put('/resetPw', (req, res) => {
 
 // 유저 정보 수정
 UserController.put('/putDetail', (req, res) => {
-  const options = {
+  const options: User = {
     user_number: Number(req.param('user_number')),
     email: req.param('email'),
     user_name: req.param('user_name'),
-    introduce: req.param('introduce')
+    introduce: req.param('introduce'),
+    user_status: req.param('user_status'),
+    user_class: req.param('user_class')
   };
   userService.putUserDetail(options)
   .then(result => {

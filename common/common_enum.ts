@@ -18,3 +18,8 @@ export enum upcd {
   user_class = 'c01',
   user_status = 'c02'
 }
+
+export enum signUpDefaultInfo {
+  user_class = 'c01_01', // c01_01: 사용중
+  user_status = 'c02_01' // c02_01: 일반
+}
