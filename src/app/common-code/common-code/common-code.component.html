@@ -13,91 +13,103 @@
       <thead>
         <tr>
           <th>Up_code</th>
-          <th>Code Name</th>
+          <th>Code_name</th>
           <th>Use_yn</th>
+          <th>Etc</th>
         </tr>
       </thead>
-      <tbody>  
-        <tr *ngFor="let list of code_list; index as i">
-              <td (click)="getCodeDetail(list.cd)">{{list.cd}}</td>
-              <td (click)="getCodeDetail(list.cd)">{{list.cd_name}}</td>
+      <tbody>
+        <tr *ngFor="let list of upcd_list; index as i" (click)="getCodeDetail(list.cd)">
+              <td>{{list.cd}}</td>
+              <td>{{list.cd_name}}</td>
               <td>{{list.use_yn}}</td>
+              <td>{{list.etc}}</td>
         </tr>
       </tbody>
     </table>
+    <a
+      class="btn btn-success"
+      (click)="popupCodeDetail(upsert.create)"
+    >add</a>
   </div>
   <div class="col-lg-6 col-md-6">
-    <label>User Detail</label>
-    <table class="table table-striped table-bordered table-hover">
+    <div class="form-group">
+      <label>Up_code Detail</label>
+    </div>
+    <form #upcdDetailForm="ngForm">
+      <table class="table table-striped table-bordered table-hover">
         <tbody>
           <tr>
-            <td style="width: 20%">User_number</td>
-            <td>{{user_dtl.user_number}}</td>
+            <td>Code</td>
+            <td>{{code_dtl.cd}}</td>
           </tr>
           <tr>
-            <td>Email</td>
-            <td>{{user_dtl.email}}</td>
-          </tr>
-          <tr>
-            <td>User_name</td>
+            <td>Code_name</td>
             <td>
               <input
                 type="text"
-                name="user_name"
-                [value]="user_dtl.user_name"
-                (input)="user_dtl.user_name"
+                name="cd_name"
+                [(ngModel)]="code_dtl.cd_name"
+                required
               />
             </td>
           </tr>
           <tr>
-            <td>Password</td>
+            <td>Use_yn</td>
             <td>
-                <a
-                  class="btn btn-warning"
-                  (click)="resetPassword(user_dtl.user_number)"
-                >reset</a>
+              <select name="use_yn" [(ngModel)]="code_dtl.use_yn">
+                <option *ngFor="let i of use_yn;" [ngValue]="i.value">{{i.name}}</option>
+              </select>
             </td>
           </tr>
           <tr>
-            <td>User_status</td>
+            <td>Etc</td>
             <td>
-              <select></select>
-            </td>
-          </tr>
-          <tr>
-            <td>User_class</td>
-            <td>
-              <select></select>
-            </td>
-          </tr>
-          <tr>
-            <td>CreateDate<br>(UpdateDate)</td>
-            <td>{{user_dtl.create_date}}<br>( {{user_dtl.update_date}} )</td>
-          </tr>
-          <tr>
-            <td>Introduce</td>
-            <td>
-              <textarea
+              <input
                 type="text"
-                name="introduce"
-                [value]="user_dtl.introduce"
-                (input)="user_dtl.introduce"
-              ></textarea>
+                name="etc"
+                [(ngModel)]="code_dtl.etc"
+              />
             </td>
           </tr>
           <tr>
-            <td>Sign fail count</td>
-            <td>{{user_dtl.sign_fail_cnt}}/5</td>
+            <td>Create_date<br>(update_date)</td>
+            <td>{{code_dtl.create_date}}<br>({{code_dtl.update_date}})</td>
           </tr>
         </tbody>
+      </table>
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="upcdDetailModify()"
+        [disabled]="!upcdDetailForm.form.valid"
+      >update</button>
+    </form>
+    <div class="form-group">
+      <label>Code Detail</label>
+    </div>
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Code_name</th>
+          <th>Use_yn</th>
+          <th>Etc</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of code_list; index as i" (click)="popupCodeDetail(upsert.modify, list.cd)">
+          <td>{{list.cd}}</td>
+          <td>{{list.cd_name}}</td>
+          <td>{{list.use_yn}}</td>
+          <td>{{list.etc}}</td>
+        </tr>
+      </tbody>
     </table>
-    <a
+    <button
+      type="button"
       class="btn btn-success"
-      (click)="putUserDetail()"
-    >update</a>
-    <a
-      class="btn btn-success"
-      (click)="getCodeTest()"
-    >test</a>
+      (click)="popupCodeDetail(upsert.create, code_dtl.cd)"
+    >add</button>
   </div>
 </div>

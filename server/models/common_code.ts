@@ -14,7 +14,7 @@ export interface CM extends Sequelize.Model<CM, CommonCode> {
 
 
 export const CommonCodeModel = sequelize.define<CM, CommonCode>('common_code', {
-  cd: {type: Sequelize.STRING},
+  cd: {type: Sequelize.STRING, primaryKey: true},
   up_cd: {type: Sequelize.STRING},
   cd_name: {type: Sequelize.STRING},
   use_yn: {type: Sequelize.STRING},
