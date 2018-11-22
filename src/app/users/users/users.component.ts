@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../../common/interfaces/user';
+import { CommonCode } from '../../../../common/interfaces/common_code';
 import { UsersService } from './users.service';
 import { CodeService } from '../../core/common-code.service';
-import { common_code } from '../../../../common/common_enum';
+import { common_code, upcd } from '../../../../common/common_enum';
 
 @Component({
   selector: 'users',
@@ -14,6 +15,8 @@ export class UsersComponent implements OnInit {
   user_list: User[];
   user_dtl: User;
   name: string;
+  us: CommonCode[];
+  uc: CommonCode[];
 
   constructor(
     private usersService: UsersService,
@@ -21,8 +24,15 @@ export class UsersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getCommonCodeList();
     this.initInterface();
     this.getUserList();
+
+  }
+
+  getCommonCodeList() {
+    this.codeService.getCodeList(upcd.user_status).subscribe(a => this.us = a);
+    this.codeService.getCodeList(upcd.user_class).subscribe(a => this.uc = a);
   }
 
   initInterface() {
@@ -65,13 +75,6 @@ export class UsersComponent implements OnInit {
     this.usersService.putUserDetail(this.user_dtl)
     .subscribe(result => {
       alert((result[0] === 1) ? '수정되었습니다.' : '수정되지 않았습니다.');
-    });
-  }
-
-  getCodeTest() {
-    this.codeService.getCodeInfo(common_code.user_class)
-    .subscribe(result => {
-      console.log(result);
     });
   }
 

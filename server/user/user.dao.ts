@@ -41,7 +41,10 @@ export class UserDao extends SQ {
   async putUserDetail(options: User): Bluebird<any> {
     return await user.User.update({
       user_name: options.user_name,
-      introduce: options.introduce
+      introduce: options.introduce,
+      user_status: options.user_status,
+      user_class: options.user_class,
+      update_date: new Date()
     }, {
       where: {
         user_number: options.user_number
