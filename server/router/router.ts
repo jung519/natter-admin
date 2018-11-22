@@ -11,6 +11,6 @@ export default class Routes {
         server.app.use('/', router);
         server.app.use('/user', UserController);
         server.app.use('/', signController);
-        server.app.use('/commonCode', CommonCodeController);
+        server.app.use('/common_code', CommonCodeController);
     }
 }

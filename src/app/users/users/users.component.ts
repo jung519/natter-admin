@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../../common/interfaces/user';
 import { UsersService } from './users.service';
-import { CommonCodeService } from '../../core/common-code.service';
+import { CodeService } from '../../core/common-code.service';
 import { common_code } from '../../../../common/common_enum';
 
 @Component({
@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private commonCodeService: CommonCodeService
+    private codeService: CodeService
   ) { }
 
   ngOnInit() {
@@ -69,7 +69,7 @@ export class UsersComponent implements OnInit {
   }
 
   getCodeTest() {
-    this.commonCodeService.getCodeInfo(common_code.user_class)
+    this.codeService.getCodeInfo(common_code.user_class)
     .subscribe(result => {
       console.log(result);
     });

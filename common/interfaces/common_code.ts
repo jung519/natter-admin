@@ -1,5 +1,6 @@
 export interface CommonCode {
   cd?: string;
+  edit_cd?: string;
   up_cd?: string;
   cd_name?: string;
   use_yn?: string;

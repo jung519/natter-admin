@@ -9,3 +9,12 @@ export enum yes_no {
   no = 'N'
 }
 
+export enum upsert {
+  create = 'C',
+  modify = 'M'
+}
+
+export enum upcd {
+  user_class = 'c01',
+  user_status = 'c02'
+}
