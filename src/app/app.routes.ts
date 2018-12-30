@@ -11,7 +11,8 @@ export const routes: Routes = [
     children : [
       {path: '', loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
       {path: '', loadChildren: 'app/users/users.module#UsersModule'},
-      {path: '', loadChildren: 'app/common-code/common-code.module#CommonCodeModule'}
+      {path: '', loadChildren: 'app/common-code/common-code.module#CommonCodeModule'},
+      {path: '', loadChildren: 'app/post/post.module#PostModule'}
     ]
   },
   {

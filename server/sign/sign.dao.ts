@@ -23,7 +23,7 @@ export default class SignDao extends SQ {
       , (u.password = :password) as pw_conform
       FROM users AS u
       WHERE u.email = :email
-      AND u.user_status = ${signUpDefaultInfo.user_status}
+      AND u.user_status = '${signUpDefaultInfo.user_status}'
     `;
     replacements['email'] = options.email;
     replacements['password'] = options.password;

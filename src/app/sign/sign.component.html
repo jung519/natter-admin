@@ -5,7 +5,7 @@
           <div class="panel-heading">
               <h1>Natter - Admin</h1>
               <div class="panel-title">Sign In</div>
-              <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+              <!-- <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div> -->
           </div>
           <div style="padding-top:30px" class="panel-body" >
             <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
@@ -36,7 +36,7 @@
               <div class="input-group">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="remember" value="1"> Remember me
+                    <!-- <input type="checkbox" name="remember" value="1"> Remember me -->
                   </label>
                 </div>
               </div>
@@ -49,12 +49,12 @@
                     (click)="signIn()"
                     [disabled]="!signInForm.form.valid"
                   >Sign</button>
-                  <button
+                  <!-- <button
                     type="button"
                     style="margin-left:8px;"
                     class="btn btn-primary"
                     (click)="signWithGoogle()"
-                  >SignIn with Google</button>
+                  >SignIn with Google</button> -->
                 </div>
               </div>
               <div class="form-group">
@@ -166,12 +166,12 @@
                       [disabled]="!signUpForm.form.valid"
                     ><i class="icon-hand-right"></i>Sign Up</button>
                     <span style="margin-left:8px; margin-right: 8px">or</span>
-                    <button
+                    <!-- <button
                       id="btn-fbsignup"
                       type="button"
                       class="btn btn-primary"
                       (click)="signWithGoogle()"
-                    ><i class="icon-facebook"></i>Sign Up with Google</button>
+                    ><i class="icon-facebook"></i>Sign Up with Google</button> -->
                 </div>
             </div>
             <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">

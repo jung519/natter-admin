@@ -31,7 +31,7 @@ export function tokenGetter() {
     AppComponent,
     SignComponent,
     MainComponent,
-    NavigationComponent,
+    NavigationComponent
   ],
   imports: [
     CoreModule,
