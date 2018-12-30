@@ -23,7 +23,10 @@ export class UserDao extends SQ {
   async getUserInfo(options: User): Bluebird<User> {
     return await user.User.findOne({
       where: {
-        [this.op.or]: [{email: options.email}, {user_number: options.user_number}]
+        [this.op.or]: [
+          {email: options.email},
+          {user_number: options.user_number}
+        ]
       }
     });
   }

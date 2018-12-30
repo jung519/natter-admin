@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h2>POST</h2>  
+  </div>
+</div>
+<hr />
+<div class="row" >
+  <div class="col-lg-6 col-md-6">
+    <div class="form-group">
+      <label>Post Search</label>
+      <div class="row">
+        <div class="col-md-2">글상태</div>
+        <div class="col-md-7">
+          <select name="search_post_status" [(ngModel)]="search_info.post_status">
+            <option value="">all</option>
+            <option *ngFor="let list of us" [ngValue]="list.cd">{{list.cd_name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="email"
+            name="search_email"
+            [(ngModel)]="search_info.email"
+          >
+        </div>
+        <div class="col-md-2">
+          <a
+            class="btn btn-info"
+            (click)="getPostList()"
+          >search</a>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th style="width: 5px; text-align: center">No.</th>
+          <th style="width: 40%">Email</th>
+          <th>Post</th>
+        </tr>
+      </thead>
+      <tbody>  
+          <tr *ngFor="let list of post_list; index as i" (click)="getPostInfo(list.post_number)">
+                <td>{{list.post_number}}</td>
+                <td>{{list.email}}</td>
+                <td>{{list.content}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-6 col-md-6">
+    <label>Post Info</label>
+    <table class="table table-striped table-bordered table-hover">
+        <tbody>
+          <tr>
+            <td style="width: 20%">Post_number</td>
+            <td>{{post_dtl.post_number}}</td>
+          </tr>
+          <tr>
+            <td>Email(name)</td>
+            <td>{{post_dtl.email}}({{post_dtl.user_name}})</td>
+          </tr>
+          <tr>
+            <td>content</td>
+            <td>{{post_dtl.content}}</td>
+          </tr>
+          <tr>
+            <td>post_status</td>
+            <td>
+              <select name="info_post_status" [(ngModel)]="post_dtl.post_status">
+                <option *ngFor="let list of us" [ngValue]="list.cd">{{list.cd_name}}</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>create_date</td>
+            <td>{{post_dtl.create_date}}</td>
+          </tr>
+          <tr>
+            <td>del_yn</td>
+            <td>
+              <select name="info_del_yn" [(ngModel)]="post_dtl.del_yn">
+                <option value="Y">Y</option>
+                <option value="N">N</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>image_check</td>
+            <td>{{post_dtl.img_chk}}</td>
+          </tr>
+          <tr>
+            <td>hashtag</td>
+            <td>{{post_dtl.hashtag}}</td>
+          </tr>
+          <tr>
+            <td>like_count</td>
+            <td>{{post_dtl.like_cnt}}(개)</td>
+          </tr>
+        </tbody>
+    </table>
+    <a
+      class="btn btn-success"
+      (click)="putPostInfo()"
+    >update</a>
+  </div>
+</div>

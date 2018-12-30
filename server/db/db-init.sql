@@ -96,6 +96,23 @@ CREATE TABLE natter.hashtag
     PRIMARY KEY (tag_number)
 );
 
+ALTER TABLE natter.hashtag COMMENT '해시태그';
+
 ALTER TABLE natter.hashtag ADD CONSTRAINT FK_hashtag_post_number_posts_post_number FOREIGN KEY (post_number)
  REFERENCES natter.posts (post_number)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- files Table Create SQL
+CREATE TABLE natter.files
+(
+    `file_number`  INT             NOT NULL    AUTO_INCREMENT COMMENT '파일번호', 
+    `file_url`     VARCHAR(255)    NULL        COMMENT '파일주소', 
+    `file_name`    VARCHAR(255)    NULL        COMMENT '파일이름', 
+    `file_size`    INTEGER         NULL        COMMENT '파일크기', 
+    `file_type`    VARCHAR(45)     NULL        COMMENT '파일종류', 
+    `create_date`  DATETIME        NULL        COMMENT '생성일', 
+    PRIMARY KEY (file_number)
+);
+
+ALTER TABLE natter.files COMMENT '파일';
 

@@ -4,7 +4,8 @@
   "scripts": {
     "start": "concurrently --kill-others \"npx tsc -w\" \"nodemon dist/out-tsc/server/app.js\"",
     "build": "npx tsc --watch",
-    "prebuild": "rm -rf dist/out-tsc"
+    "prebuild": "rm -rf dist/out-tsc",
+    "serve": "ng serve --port 12000"
   },
   "private": true,
   "dependencies": {

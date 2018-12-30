@@ -3,6 +3,7 @@ import { IServer } from '../interfaces/ServerInterface';
 import { signController } from '../sign/sign.controller';
 import { UserController } from '../user/user.controller';
 import { CommonCodeController } from '../common_code/common_code.controller';
+import { PostController } from '../post/post.controller';
 
 export default class Routes {
     static init(server: IServer): void {
@@ -12,5 +13,6 @@ export default class Routes {
         server.app.use('/user', UserController);
         server.app.use('/', signController);
         server.app.use('/common_code', CommonCodeController);
+        server.app.use('/post', PostController);
     }
 }

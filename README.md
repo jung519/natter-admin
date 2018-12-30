@@ -14,4 +14,4 @@
 + backend : npm run start 
 + backend port : 13000
 + frontend : ng serve
-+ frontend port : 4200
++ frontend port : 12000
